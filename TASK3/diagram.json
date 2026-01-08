@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "author": "v",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-st-nucleo-c031c6",
+      "id": "nucleo",
+      "top": 29.63,
+      "left": 114.22,
+      "attrs": {}
+    },
+    { "type": "wokwi-potentiometer", "id": "pot1", "top": 56.3, "left": -173, "attrs": {} },
+    { "type": "wokwi-potentiometer", "id": "pot2", "top": 56.3, "left": -67.4, "attrs": {} },
+    { "type": "wokwi-led", "id": "led1", "top": -90, "left": -25, "attrs": { "color": "purple" } },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 120,
+      "left": 393.05,
+      "rotate": 90,
+      "attrs": { "value": "1000" }
+    }
+  ],
+  "connections": [
+    [ "$serialMonitor:TX", "nucleo:PA3", "", [] ],
+    [ "$serialMonitor:RX", "nucleo:PA2", "", [] ],
+    [ "pot2:GND", "nucleo:GND.4", "black", [ "v28.8", "h144", "v96" ] ],
+    [ "pot1:GND", "nucleo:GND.4", "black", [ "v28.8", "h249.6", "v96" ] ],
+    [ "pot2:VCC", "nucleo:3V3.1", "red", [ "v0" ] ],
+    [ "pot1:VCC", "nucleo:3V3.1", "red", [ "v0" ] ],
+    [ "pot2:SIG", "nucleo:PA1", "green", [ "v0" ] ],
+    [ "pot1:SIG", "nucleo:PA0", "green", [ "v0" ] ],
+    [ "nucleo:GND.4", "nucleo:GND.6", "black", [ "h0" ] ],
+    [ "led1:C", "nucleo:GND.5", "green", [ "v48", "h192.4", "v240" ] ],
+    [ "led1:A", "r1:1", "green", [ "v38.4", "h422.4" ] ],
+    [ "r1:2", "nucleo:PB1", "green", [ "v210", "h-316.8", "v-57.6" ] ]
+  ],
+  "dependencies": {}
+}
