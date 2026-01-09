@@ -30,8 +30,12 @@ int main() {
   double difference;
   int timerImpl;
   int startedImpl = 0;
+  int timer = 0;
 
   while (1){
+    if(HAL_GetTick() - timer >= 1000){
+      timer = HAL_GetTick();
+    }
 
     //ocitavanje vrijednosti i konstantno mjenjanje kanala za ADC
     ChangeChannel(0);
@@ -48,6 +52,9 @@ int main() {
 
     //detekcija implauzibilnosti
     if(difference > 10){
+      if(HAL_GetTick() - timer >= 1000){
+        printf("\tWARNING difference greater than 10 percent\n");
+      }
       if(startedImpl == 0){
         timerImpl = HAL_GetTick();
       }
