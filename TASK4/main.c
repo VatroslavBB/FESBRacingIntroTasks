@@ -39,7 +39,8 @@ int main(){
   }
 }
 
-int DebouncePB(){static uint8_t lastState = GPIO_PIN_SET;
+int DebouncePB(){
+  static uint8_t lastState = GPIO_PIN_SET;
   static uint8_t stableState = GPIO_PIN_SET;
   static uint32_t lastChangeTime = 0;
 
